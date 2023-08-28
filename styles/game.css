@@ -1,0 +1,29 @@
+/*Styling for the entire choice container*/
+.choice-container {
+    display: flex; /*flexbox*/
+    margin-bottom: 0.5rem; /*default margin-bottom*/
+    width: 100%; /*100% of container for easy child alignment*/
+    font-size: 1.8rem; /*1.8 * 10px = 18px*/
+    border: 0.1rem solid rgba(86, 165, 135, 0.25); /*0.1rem = 1px*/
+    background-color: white; /*default background color*/
+}
+
+/*Styling for the entire choice container on hover*/
+.choice-container:hover {
+    cursor: pointer; /*change cursor on hover*/
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5); /*add shadow on hover*/
+    transform: translateY(-0.1rem); /*move button up 1px*/
+    transition: transform 150ms; /*add transition*/
+}
+
+/*For [A B C D] Color fill*/
+.choice-prefix {
+    padding: 1.5rem 2.5rem; /*1.5rem = 15px*/
+    background-color: #56a5eb; /*default background color*/
+    color:white; /*default text color*/
+}
+
+/*For text inside each choice*/
+.choice-text {
+    padding: 1.5rem; /*1.5rem = 15px*/
+}
