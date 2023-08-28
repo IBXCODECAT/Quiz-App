@@ -40,5 +40,5 @@ saveHighScore = e => {
     //Update the high scores in local storage
     localStorage.setItem("high-scores", JSON.stringify(HIGH_SCORES));
 
-    window.locathref = "../index.html";
+    window.location.href = "../index.html";
 }

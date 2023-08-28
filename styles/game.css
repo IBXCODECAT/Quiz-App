@@ -67,3 +67,22 @@
     background-color: #56a5eb; /*background color*/
     width: 0%; /*0% of progress bar at start*/
 }
+
+/*STYLING FOR LOADING CIRCLE*/
+#loader {
+    border: 1.6rem solid white; /*1.6rem = 16px*/
+    border-radius: 50%; /*circle*/
+    border-top: 1.6rem solid #56a5eb; /*1.6rem = 16px & top border blue*/
+    width: 12rem; /*12 * 10px = 120px*/
+    height: 12rem; /*12 * 10px = 120px*/
+    animation: spin 2s forwards infinite; /*spin animation*/
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(720deg);
+    }
+}

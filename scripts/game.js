@@ -6,8 +6,13 @@ const choices = Array.from(document.getElementsByClassName("choice-text"));
 const txtScore = document.getElementById("score");
 const txtProgress = document.getElementById("progress-text");
 const elProgressFill = document.getElementById("progress-fill");
+const elLoader = document.getElementById("loader");
+const elGame = document.getElementById("game");
 
-console.log(choices);
+//CONSTANTS
+const CORRECT_BONUS = 10; //How many points we want to give for each correct answer
+const MAX_QUESTIONS = 20; //How many questions we want in our game
+const FEEDBACK_DELAY = 500; //How long to show feedback
 
 //VARIABLES
 let currentQuestion = {};
@@ -15,10 +20,10 @@ let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
-
 let questions = [];
 
-fetch("https://opentdb.com/api.php?amount=20&type=multiple").then(res => {
+//Fetch questions from the Open Trivia Database API
+fetch(`https://opentdb.com/api.php?amount=${MAX_QUESTIONS}&type=multiple`).then(res => {
     return res.json();
 }).then(loadedQuestions => {
     
@@ -40,24 +45,27 @@ fetch("https://opentdb.com/api.php?amount=20&type=multiple").then(res => {
             formattedQuestion["choice" + (index + 1)] = choice;
         });
 
+        //Return the formatted question object
         return formattedQuestion;
     })
+
+    //Start the game
     startGame();
 });
 
-//CONSTANTS
-const CORRECT_BONUS = 10; //How many points we want to give for each correct answer
-const MAX_QUESTIONS = 3; //How many questions we want in our game
-const FEEDBACK_DELAY = 50; //How long to show feedback
-
-
-
-
 startGame = () => {
+    //Reset the question counter and score
     questionCounter = 0;
     score = 0;
+    //Copy the questions array to the available questions array
     availableQuestions = [...questions]; //Spread operator to copy the questions array
+    
+    //Display the game and hide the loader
     getNewQuestion();
+
+    //Hide the loader and display the game
+    elGame.classList.remove('hidden');
+    elLoader.classList.add('hidden');
 }
 
 getNewQuestion = () => {
@@ -81,7 +89,13 @@ getNewQuestion = () => {
     //Randomly select a question from the available questions array
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
-    question.innerText = currentQuestion.question; //Display the question
+    
+    console.log(currentQuestion.question);
+
+    //Display the question & decode escaped characters
+    question.innerText = currentQuestion.question
+        .replaceAll("&quot;", '"')
+        .replaceAll("&#039;", "'");
 
     //Display the choices for the current question
     choices.forEach(choice => {
@@ -125,4 +139,9 @@ choices.forEach(choice => {
 incrementScore = num => {
     score += num;
     txtScore.innerText = score;
+}
+
+//Replace all instances of a string in a string
+function replaceAll(string, search, replace) {
+    return string.split(search).join(replace);
 }
