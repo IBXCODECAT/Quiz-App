@@ -1,3 +1,5 @@
+console.log("game.js loaded");
+
 //DOM ELEMENTS
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
@@ -30,7 +32,11 @@ startGame = () => {
 getNewQuestion = () => {
     //Check if there are any questions left, redirect to end page if none left
     if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-        return window.location.assign = "/pages/end.html";
+        //Store the score in local storage
+        localStorage.setItem('most-recent-score', score);
+        
+        //Redirect to the end page
+        return window.location.href = "../pages/end.html";
     }
 
     //Increment the question counter
@@ -80,7 +86,7 @@ choices.forEach(choice => {
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(answer_correctness);
             getNewQuestion();
-        }, 5000);
+        }, FEEDBACK_DELAY);
     });
 });
 

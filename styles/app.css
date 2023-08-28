@@ -107,3 +107,25 @@ h3 {
     box-shadow: none; /*remove shadow on hover*/
     transform: none; /*no transform on hover*/
 }
+
+/* FORMS */
+form {
+    width: 100%; /*100% of container for easy child alignment*/
+    display: flex; /*flexbox*/
+    flex-direction: column; /*vertical flexbox*/
+    align-items: center; /*center vertically*/
+}
+
+input {
+    margin-bottom: 1rem; /*1rem = 10px*/
+    width: 20rem; /*20 * 10px = 200px*/
+    padding: 1.5rem; /*1.5rem = 15px*/
+    font-size: 1.8rem; /*1.8 * 10px = 18px*/
+    border: none; /*remove default border*/
+    box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5); /*add shadow*/
+}
+
+input::placeholder
+{
+    color:  #aaa;
+}
