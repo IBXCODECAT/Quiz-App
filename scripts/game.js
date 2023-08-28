@@ -12,7 +12,7 @@ const elGame = document.getElementById("game");
 //CONSTANTS
 const CORRECT_BONUS = 10; //How many points we want to give for each correct answer
 const MAX_QUESTIONS = 20; //How many questions we want in our game
-const FEEDBACK_DELAY = 500; //How long to show feedback
+const FEEDBACK_DELAY = 00; //How long to show feedback
 
 //VARIABLES
 let currentQuestion = {};
@@ -95,12 +95,35 @@ getNewQuestion = () => {
     //Display the question & decode escaped characters
     question.innerText = currentQuestion.question
         .replaceAll("&quot;", '"')
-        .replaceAll("&#039;", "'");
+        .replaceAll("&#039;", "'")
+        .replaceAll("&amp;", "&")
+        .replaceAll("&eacute;", "é")
+        .replaceAll("&ntilde;", "ñ")
+        .replaceAll("&uuml;", "ü")
+        .replaceAll("&ldquo;", '"')
+        .replaceAll("&rdquo;", '"')
+        .replaceAll("&deg;", "°")
+        .replaceAll("&shy;", "-")
+        .replaceAll("&hellip;", "…")
+        .replaceAll("&rsquo;", "'")
+        .replaceAll("&divide;", "÷");
 
     //Display the choices for the current question
     choices.forEach(choice => {
         const option_id = choice.dataset['oid'];
-        choice.innerText = currentQuestion["choice" + option_id];
+        choice.innerText = currentQuestion["choice" + option_id]
+            .replaceAll("&quot;", '"')
+            .replaceAll("&#039;", "'")
+            .replaceAll("&amp;", "&")
+            .replaceAll("&eacute;", "é")
+            .replaceAll("&ntilde;", "ñ")
+            .replaceAll("&uuml;", "ü")
+            .replaceAll("&ldquo;", '"')
+            .replaceAll("&rdquo;", '"')
+            .replaceAll("&deg;", "°")
+            .replaceAll("&shy;", "-")
+            .replaceAll("&hellip;", "…")
+            .replaceAll("&divide;", "÷");
     });
 
     //Remove the question we just used from the available questions array
