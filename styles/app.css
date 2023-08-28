@@ -42,11 +42,12 @@ h3 {
 .container {
     width: 100vh; /*100% of viewport height*/
     height: 100vh; /*100% of viewport height*/
-    display: flex;
+    display: flex; /*flexbox*/
     justify-content: center; /*center horizontally*/
     align-items: center; /*center vertically*/
     margin: 0 auto; /*center container padding/margin*/
     max-width: 80rem; /*80 * 10px = 800px*/
+    padding: 2rem; /*2 * 10px = 20px*/
 }
 
 .container > * {
