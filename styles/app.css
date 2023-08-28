@@ -1,0 +1,81 @@
+:root {
+    background-color: #ecf5ff;
+    font-size: 62.5%; /*62.5% of 16px = 10px*/
+}
+
+* {
+    box-sizing: border-box; /*default borders inside of box-sizing*/
+    font-family: Arial, Helvetica, sans-serif; /*default font*/
+    margin: 0; /*remove default margin*/
+    padding: 0; /*remove default padding*/
+    color: #333; /*default text color*/
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 1rem; /*default margin-bottom*/
+}
+
+h1 {
+    font-size: 5.4rem; /*5.4 * 10px = 54px*/
+    color: #56a5eb;
+    margin-bottom: 5rem;    
+}
+
+h1 > span {
+    font-size: 2.4rem;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 4.2rem; /*4.2 * 10px = 42px*/ 
+    margin-bottom: 4rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 2.8rem;
+    font-weight: 500;
+}
+
+/* ========= LAYOUT CLASSES ========= */
+
+.container {
+    width: 100vh; /*100% of viewport height*/
+    height: 100vh; /*100% of viewport height*/
+    display: flex;
+    justify-content: center; /*center horizontally*/
+    align-items: center; /*center vertically*/
+    margin: 0 auto; /*center container padding/margin*/
+    max-width: 80rem; /*80 * 10px = 800px*/
+}
+
+.container > * {
+    width: 100%; /*100% of container for easy child alignment*/
+}
+
+/*Vertical Flexbox*/
+.flex-column { 
+    display: flex;
+    flex-direction: column;
+}
+
+/*Center Flexbox*/
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+/*Justify Center Flexbox*/
+.justify-center {
+    justify-content: center;
+}
+
+/*Text-Align Center Flexbox*/
+.text-center {
+    text-align: center;
+}
+
+/*Hide Layout Items*/
+.hidden {
+    display: none;
+}
