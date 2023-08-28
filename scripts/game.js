@@ -12,7 +12,7 @@ const elGame = document.getElementById("game");
 //CONSTANTS
 const CORRECT_BONUS = 10; //How many points we want to give for each correct answer
 const MAX_QUESTIONS = 20; //How many questions we want in our game
-const FEEDBACK_DELAY = 00; //How long to show feedback
+const FEEDBACK_DELAY = 500; //How long to show feedback
 
 //VARIABLES
 let currentQuestion = {};
