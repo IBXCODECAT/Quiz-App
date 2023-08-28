@@ -13,6 +13,7 @@ let availableQuestions = [];
 //CONSTANTS
 const CORRECT_BONUS = 10; //How many points we want to give for each correct answer
 const MAX_QUESTIONS = 3; //How many questions we want in our game
+const FEEDBACK_DELAY = 500; //How long to show feedback
 
 startGame = () => {
     questionCounter = 0;
@@ -54,11 +55,21 @@ choices.forEach(choice => {
     choice.addEventListener("click", e => {
         if(!acceptingAnswers) return;
         acceptingAnswers = false;
-
+ 
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["oid"];
+        
+        //Check if the answer is correct
+        const answer_correctness = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+        
+        selectedChoice.parentElement.classList.add(answer_correctness);
+        
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(answer_correctness);
+            getNewQuestion();
+        }, 5000);
 
-        getNewQuestion();
+
     });
 });
 

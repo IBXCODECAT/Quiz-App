@@ -28,3 +28,13 @@
     padding: 1.5rem; /*1.5rem = 15px*/
     width: 100%; /*100% of container for clickablity*/
 }
+
+/*STYLING FOR ANSWER CORRECTNESS*/
+
+.correct {
+    background-color: #28a745;
+}
+
+.incorrect {
+    background-color: #dd3545;
+}
