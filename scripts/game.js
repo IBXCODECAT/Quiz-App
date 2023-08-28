@@ -1,6 +1,9 @@
 //DOM ELEMENTS
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
+const txtScore = document.getElementById("score");
+const txtQuestionCounter = document.getElementById("question-counter");
+
 console.log(choices);
 
 //VARIABLES
@@ -13,7 +16,7 @@ let availableQuestions = [];
 //CONSTANTS
 const CORRECT_BONUS = 10; //How many points we want to give for each correct answer
 const MAX_QUESTIONS = 3; //How many questions we want in our game
-const FEEDBACK_DELAY = 500; //How long to show feedback
+const FEEDBACK_DELAY = 50; //How long to show feedback
 
 startGame = () => {
     questionCounter = 0;
@@ -31,6 +34,9 @@ getNewQuestion = () => {
 
     //Increment the question counter
     questionCounter++;
+
+    //Update the HUD question counter text
+    txtQuestionCounter.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
 
     //Randomly select a question from the available questions array
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -64,14 +70,22 @@ choices.forEach(choice => {
         
         selectedChoice.parentElement.classList.add(answer_correctness);
         
+        //Increment the score if the answer is correct
+        if(answer_correctness === 'correct') incrementScore(CORRECT_BONUS);
+
+        //Delay the next question and give user feedback
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(answer_correctness);
             getNewQuestion();
         }, 5000);
-
-
     });
 });
+
+//Increment the score
+incrementScore = num => {
+    score += num;
+    txtScore.innerText = score;
+}
 
 let questions = [
     {

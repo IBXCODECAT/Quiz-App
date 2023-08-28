@@ -38,3 +38,19 @@
 .incorrect {
     background-color: #dd3545;
 }
+
+/*HUD*/
+
+#hud {
+    display: flex; /*flexbox*/
+    justify-content: space-between; /*space between elements*/
+}
+
+.hud-prefix {
+    text-align: center; /*center text*/
+    font-size: 2rem; /*2 * 10px = 20px*/
+}
+
+.hud-main-text {
+    text-align: center; /*center text*/
+}
