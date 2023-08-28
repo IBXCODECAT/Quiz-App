@@ -54,3 +54,16 @@
 .hud-main-text {
     text-align: center; /*center text*/
 }
+
+#progress-bar {
+    width: 20rem; /*20 * 10px = 200px*/
+    height: 2rem; /*2 * 10px = 20px*/
+    border: 0.3rem solid #56a5eb; /*0.3rem = 3px*/
+    margin: 1.8rem; /*1rem = 10px*/
+}
+
+#progress-fill {
+    height: 1.6rem; /*1.5 * 10px = 25px*/
+    background-color: #56a5eb; /*background color*/
+    width: 0%; /*0% of progress bar at start*/
+}

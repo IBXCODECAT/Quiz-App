@@ -2,7 +2,8 @@
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 const txtScore = document.getElementById("score");
-const txtQuestionCounter = document.getElementById("question-counter");
+const txtProgress = document.getElementById("progress-text");
+const elProgressFill = document.getElementById("progress-fill");
 
 console.log(choices);
 
@@ -35,8 +36,10 @@ getNewQuestion = () => {
     //Increment the question counter
     questionCounter++;
 
-    //Update the HUD question counter text
-    txtQuestionCounter.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+    //Update the HUD question counter text & progress bar
+    txtProgress.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
+    elProgressFill.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+    console.log((questionCounter / MAX_QUESTIONS) * 100);
 
     //Randomly select a question from the available questions array
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
