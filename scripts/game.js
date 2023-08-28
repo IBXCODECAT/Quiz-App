@@ -18,10 +18,30 @@ let availableQuestions = [];
 
 let questions = [];
 
-fetch("../data/questions.json").then(res => {
+fetch("https://opentdb.com/api.php?amount=20&type=multiple").then(res => {
     return res.json();
 }).then(loadedQuestions => {
-    questions = loadedQuestions;
+    
+    //Map the loaded questions to a new array formatted the way we want
+    questions = loadedQuestions.results.map(loadedQuestion => {
+        const formattedQuestion = {
+            question: loadedQuestion.question
+        }
+
+        //Map the loaded question's incorrect answers to a new array
+        const answerChoices = [...loadedQuestion.incorrect_answers];
+
+        //Randomly insert the correct answer into the answer choices array
+        formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
+        answerChoices.splice(formattedQuestion.answer - 1, 0, loadedQuestion.correct_answer);
+
+        //Map the answer choices to the formatted question object
+        answerChoices.forEach((choice, index) => {
+            formattedQuestion["choice" + (index + 1)] = choice;
+        });
+
+        return formattedQuestion;
+    })
     startGame();
 });
 
